@@ -1,0 +1,21 @@
+head
+    style
+        include style.css
+include ../layouts/application.pug
+form(method="POST" action="/users")
+    label(for="first_name") Имя:
+    input#firstName(type="text" name="firstname" required)
+
+    label(for="last_name") Фамилия:
+    input#lastName(type="text" name="lastname" required)
+
+    label(for="email") Email:
+    input#email(type="email" name="email" required)
+
+    label(for="password") Пароль:
+    input#password(type="password" name="password" required)
+
+    button(type="submit") Зарегистрироваться
+footer(style="position:fixed; bottom:0; width:100%")
+    p Developer by Alexander Shlepin
+

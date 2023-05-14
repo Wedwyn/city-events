@@ -1,0 +1,17 @@
+head
+	style
+		include style.css
+
+include ../layouts/application.pug
+section
+	div.container
+		each event in events
+			div.event
+				div.screensaver
+					h1 Место для фото
+				div.description
+					h3 Название
+					p Мероприятия мэра приятеля
+footer
+	p Developer by Alexander Shlepin
+    

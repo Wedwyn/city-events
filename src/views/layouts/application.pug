@@ -1,0 +1,21 @@
+html
+	head
+		title Мероприятия
+		style
+			include style.css
+	body
+		header
+			h1
+				a(href='/') Главная
+			nav
+				ul
+					if isAuthenticated
+						li
+							a(href='/session/delete') Выйти
+					else
+						li
+							a(href='/session/new') Войти
+						li
+							a(href='/users/new') Регистрация
+					
+    
