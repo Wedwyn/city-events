@@ -1,0 +1,31 @@
+head
+    style
+        include style.css
+include ../layouts/application.pug
+form(method="POST" action="/events" enctype="multipart/form-data")
+    label(for="name") Название:
+    input#name(type="text" name="name" required)
+
+    label(for="date") Дата проведения
+    input#date(type="datetime-local" name="date" required)
+
+    label(for="price") Цена:
+    input#price(type="number" name="price" required)
+
+    label(for="description") Описание:
+    textarea#description(type="text" name="description")
+
+    label(for="organizer") Организатор:
+    input#organizer(type="text" name="organizer")
+
+    label(for="address") Адрес:
+    input#address(type="text" name="address")
+
+    label(for="imageurl") Превью
+    input#imageurl(type="file" name="imageurl" required)
+
+    button(type="submit") Создать
+
+footer
+    p Developed by Alexander Shlepin
+

@@ -1,0 +1,30 @@
+head
+    meta(charset="UTF-8")
+    meta(name="viewport",content="width=device-width, initial-scale=1.0")
+    title=event.name
+    style
+        include style.css
+include ../layouts/application.pug
+.event-detailed
+    h1=event.name
+    img(src=`../../${event.imageurl}`)
+    h2=`Дата и время: ${event.date.split('T')[0]} ${event.date.split('T')[1]}`
+    h2=`Стоимость: ${event.price} рублей`
+    h3=`Описание: ${event.description}`
+    h3=`Организатор: ${event.organizer}`
+    h3=`Адрес: ${event.address}`
+    h3=`Человек пойдет: ${event.number_of_going}`
+if isAuthenticated
+    .actions
+        form.delete(action=`/events/${event.id}?_method=DELETE` method='POST')
+            button.red(type='submit') Удалить
+        a(href=`/events/${event.id}/edit`)
+            button.green Изменить 
+else
+    .actions
+        form.delete(action=`/events/${event.id}/going?_method=PATCH`, method='POST')
+            button.blue(type='sumbit') Я пойду
+        form.delete(action=`/events/${event.id}/calendar`, method='GET')
+            button.pink(type='sumbit') Добавить в календарь
+footer
+    p Developed by Alexander Shlepin
