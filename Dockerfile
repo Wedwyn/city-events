@@ -18,6 +18,4 @@ COPY . .
 ENV NODE_ENV=development
 ENV PORT=3000
 
-RUN touch database.sqlite
-
 CMD ["bash", "-c", "npx knex migrate:latest && npm start"]
