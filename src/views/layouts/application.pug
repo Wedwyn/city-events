@@ -11,11 +11,17 @@ html
 				ul
 					if isAuthenticated
 						li
-							a(href='/session/delete') Выйти
+							a(href='/events/new') Создать мероприятие
+						li
+							form.delete(action="/session?_method=DELETE" method='POST')
+								button.button-link(type='submit') Выйти
 					else
 						li
-							a(href='/session/new') Войти
-						li
-							a(href='/users/new') Регистрация
+							a(href='/session/new') Войти (для администратора)
+		each msg in messages
+			- const type = Object.keys(messages).find(key => messages[key] === msg) || null;
+			div(class=`alert alert-${type}`)
+				p=msg
+
 					
     
