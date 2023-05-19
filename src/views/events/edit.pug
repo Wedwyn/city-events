@@ -2,27 +2,28 @@ head
     style
         include style.css
 include ../layouts/application.pug
-form(method="POST" action=`/events/${event.id}?_method=PATCH` enctype="multipart/form-data")
-    label(for="name") Название:
-    input#name(type="text" name="name" required value=`${event.name || ''}` title="Введите ваше имя")
+.creating
+    form(method="POST" action=`/events/${event.id}?_method=PATCH` enctype="multipart/form-data")
+        label(for="name") Название:
+        input#name(type="text" name="name" required value=`${event.name || ''}` title="Введите ваше имя")
 
-    label(for="date") Дата проведения
-    input#date(type="datetime-local" name="date" required value=`${event.date || ''}`)
+        label(for="date") Дата проведения
+        input#date(type="datetime-local" name="date" required value=`${event.date || ''}`)
 
-    label(for="price") Цена:
-    input#price(type="number" name="price" required value=`${event.price || ''}`)
+        label(for="price") Цена:
+        input#price(type="number" name="price" required value=`${event.price || ''}`)
 
-    label(for="description") Описание:
-    textarea#description(type="text" name="description") #{event.description || ""}
+        label(for="description") Описание:
+        textarea#description(type="text" name="description") #{event.description || ""}
 
-    label(for="organizer") Организатор:
-    input#organizer(type="text" name="organizer" value=`${event.organizer || ''}`)
+        label(for="organizer") Организатор:
+        input#organizer(type="text" name="organizer" value=`${event.organizer || ''}`)
 
-    label(for="imageurl") Превью
-    input#imageurl(type="file" name="imageurl" title="Введите ваше имя")
+        label(for="imageurl") Превью
+        input#imageurl(type="file" name="imageurl" title="Введите ваше имя")
 
-    p Ничего не выбирайте, если не хотите менять превью мероприятия
-    button(type="submit") Изменить 
+        p Ничего не выбирайте, если не хотите менять превью мероприятия
+        button(type="submit") Изменить 
 
 footer
     p Developed by Alexander Shlepin

@@ -5,9 +5,9 @@ head
 include ../layouts/application.pug
 section
 	div.container
-		each event in events
+		each event, index in events
 			- const eventHref = `events/${event.id}/show`;
-			a(href=eventHref) 
+			a(href=eventHref)
 				div.event
 					- const imgPath = './' + event.imageurl;
 					- const time = `Дата и время: ${event.date.toString().split('T')[0]} ${event.date.toString().split('T')[1]}`;

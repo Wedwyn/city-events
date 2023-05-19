@@ -16,15 +16,15 @@ include ../layouts/application.pug
     h3=`Человек пойдет: ${event.number_of_going}`
 if isAuthenticated
     .actions
-        form.delete(action=`/events/${event.id}?_method=DELETE` method='POST')
+        form(action=`/events/${event.id}?_method=DELETE` method='POST')
             button.red(type='submit') Удалить
         a(href=`/events/${event.id}/edit`)
             button.green Изменить 
 else
     .actions
-        form.delete(action=`/events/${event.id}/going?_method=PATCH`, method='POST')
+        form(action=`/events/${event.id}/going?_method=PATCH`, method='POST')
             button.blue(type='sumbit') Я пойду
-        form.delete(action=`/events/${event.id}/calendar`, method='GET')
+        form(action=`/events/${event.id}/calendar`, method='GET')
             button.pink(type='sumbit') Добавить в календарь
 footer
     p Developed by Alexander Shlepin
