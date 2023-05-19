@@ -110,7 +110,6 @@ router
         if (req.isAuthenticated()) {
             const { id } = req.params;
             const event = await Event.query().findById(id);
-            console.log(event);
             res.render('events/edit', { event });
         } else {
             req.flash('info', 'У вас нет прав на это действие');
