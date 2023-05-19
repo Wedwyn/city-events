@@ -8,7 +8,7 @@ include ../layouts/application.pug
 .event-detailed
     h1=event.name
     img(src=`../../${event.imageurl}`)
-    h2=`Дата и время: ${event.date.split('T')[0]} ${event.date.split('T')[1]}`
+    h2=`Дата и время: ${event.date.toString().split('T')[0]} ${event.date.toString().split('T')[1]}`
     h2=`Стоимость: ${event.price} рублей`
     h3=`Описание: ${event.description}`
     h3=`Организатор: ${event.organizer}`
