@@ -24,7 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../dist/preview')));
+app.use(express.static(path.join(__dirname, '../tmp')));
 app.use(
     session({
         secret: process.env.SESSION_KEY,
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 // work with uploading images
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        cb(null, path.join(__dirname, '../dist/preview'));
+        cb(null, path.join(__dirname, '../tmp'));
     },
     filename(req, file, cb) {
         cb(null, `${Date.now()}-${file.originalname}`);
@@ -143,7 +143,7 @@ router
                 event.address = req.body.address;
                 if (req.file) {
                     if (event.imageurl) {
-                        fs.unlinkSync(path.join(__dirname, '../dist/preview/', event.imageurl));
+                        fs.unlinkSync(path.join(__dirname, '../tmp', event.imageurl));
                     }
                     event.imageurl = req.file.filename;
                 }
@@ -197,13 +197,12 @@ router
             busyStatus: 'BUSY',
             organizer: { name: event.organizer },
         };
-        const filename = `${__dirname}/../dist/calendar/${event.id}.ics`;
+        const filename = `${__dirname}/../tmp/${event.id}.ics`;
         try {
             await ics.createEvent(calendarEvent, (error, value) => {
                 if (error) {
                     console.log(error);
                 }
-                console.log(value);
                 fs.writeFileSync(filename, value);
             });
             await res.download(filename, (err) => {
