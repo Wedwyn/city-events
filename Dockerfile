@@ -18,4 +18,7 @@ COPY . .
 ENV NODE_ENV=development
 ENV PORT=3000
 
+RUN mkdir dist && chmod 777 dist && mkdir -p dist/preview && chmod 777 dist/preview 
+RUN mkdir -p dist/calendar && chmod 777 dist/calendar
+
 CMD ["bash", "-c", "npx knex migrate:latest && npm start"]
