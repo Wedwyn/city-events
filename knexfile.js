@@ -11,18 +11,19 @@ const migrations = {
 export const development = {
     client: 'sqlite3',
     connection: {
-        filename: './database.sqlite',
+        filename: path.join(__dirname, 'database.sqlite'),
+        // filename: './database.sqlite',
     },
     useNullAsDefault: true,
     migrations,
 };
 
-//   export const test = {
-//     client: 'sqlite3',
-//     connection: ':memory:',
-//     useNullAsDefault: true,
-//     migrations,
-//   };
+export const test = {
+    client: 'sqlite3',
+    connection: ':memory:',
+    useNullAsDefault: true,
+    migrations,
+};
 
 export const production = {
     client: 'pg',
@@ -40,4 +41,5 @@ export const production = {
 export const knexConfig = {
     development,
     production,
+    test,
 };
