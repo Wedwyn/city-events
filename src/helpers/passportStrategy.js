@@ -5,16 +5,16 @@ import User from '../models/User.js';
 passport.use(
     new LocalStrategy(
         {
-            usernameField: 'email',
+            usernameField: 'username',
             passwordField: 'password',
         },
-        async (email, password, done) => {
-            const user = await User.query().findOne({ email });
+        async (username, password, done) => {
+            const user = await User.query().findOne({ username });
             if (!user) {
-                return done(null, false, { message: 'Incorrect email or password.' });
+                return done(null, false, { message: 'Incorrect username or password.' });
             }
             if (!user.verifyPassword(password)) {
-                return done(null, false, { message: 'Incorrect email or password.' });
+                return done(null, false, { message: 'Incorrect username or password.' });
             }
             return done(null, user);
         },

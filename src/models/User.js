@@ -9,12 +9,10 @@ class User extends BaseModel {
     static get jsonSchema() {
         return {
             type: 'object',
-            required: ['firstname', 'lastname', 'email', 'password'],
+            required: ['username', 'password'],
             properties: {
                 id: { type: 'integer' },
-                firstName: { type: 'string', minLength: 1 },
-                lastName: { type: 'string', minLength: 1 },
-                email: { type: 'string', format: 'email' },
+                username: { type: 'string', minLength: 1 },
                 password: { type: 'string', minLength: 3 },
             },
         };
