@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 // work with uploading images
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        cb(null, './dist/preview');
+        cb(null, path.join(__dirname, '../dist/preview'));
     },
     filename(req, file, cb) {
         cb(null, `${Date.now()}-${file.originalname}`);
