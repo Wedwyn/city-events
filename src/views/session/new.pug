@@ -2,14 +2,15 @@ head
     style
         include style.css
 include ../layouts/application.pug
-form(method="POST" action="/session")
-    label(for="email") Имя пользователя:
-    input#username(type="text" name="username" required)
+.creating
+    form(method="POST" action="/session")
+        label(for="email") Имя пользователя:
+        input#username(type="text" name="username" required)
 
-    label(for="password") Пароль:
-    input#password(type="password" name="password" required)
+        label(for="password") Пароль:
+        input#password(type="password" name="password" required)
 
-    button(type="submit") Войти
+        button(type="submit") Войти
 
 footer
     p Developed by Alexander Shlepin
