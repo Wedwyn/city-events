@@ -21,4 +21,5 @@ ENV PORT=3000
 RUN mkdir dist && chmod 777 dist && mkdir -p dist/preview && chmod 777 dist/preview 
 RUN mkdir -p dist/calendar && chmod 777 dist/calendar
 
-CMD ["bash", "-c", "npx knex migrate:latest && npm start"]
+
+CMD ["bash", "-c", "make db-migrate && npm start"]

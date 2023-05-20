@@ -24,6 +24,7 @@
     "ics": "^3.1.0",
     "knex": "^2.4.2",
     "method-override": "^3.0.0",
+    "moment": "^2.29.4",
     "multer": "^1.4.5-lts.1",
     "objection": "^3.0.1",
     "objection-unique": "^1.2.2",
