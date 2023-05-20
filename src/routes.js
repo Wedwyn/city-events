@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { Model } from 'objection';
 import knex from 'knex';
+import moment from 'moment';
 import fs from 'fs';
 import flash from 'express-flash';
 import multer from 'multer';
@@ -182,11 +183,12 @@ router
     .get('/events/:id/calendar', async (req, res) => {
         const { id } = req.params;
         const event = await Event.query().findById(id);
-        const year = Number(event.date.toString().split('-')[0]);
-        const month = Number(event.date.toString().split('-')[1]);
-        const day = Number(event.date.toString().split('T')[0].split('-')[2]);
-        const hours = Number(event.date.toString().split('T')[1].split(':')[0]);
-        const minutes = Number(event.date.toString().split('T')[1].split(':')[1]);
+        const date = moment(event.date).format('YYYY-MM-DDTHH:mm');
+        const year = Number(date.split('-')[0]);
+        const month = Number(date.split('-')[1]);
+        const day = Number(date.split('T')[0].split('-')[2]);
+        const hours = Number(date.split('T')[1].split(':')[0]);
+        const minutes = Number(date.split('T')[1].split(':')[1]);
         const calendarEvent = {
             start: [year, month, day, hours, minutes],
             title: event.name,
